@@ -15,10 +15,16 @@ export function Footer() {
             </div>
             <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>Hashir-store</span>
           </div>
-          <p className="text-sm opacity-80 leading-relaxed">
-            Curated essentials for the modern life. Designed with intention, delivered with care.
-          </p>
-        </div>
+<p className="text-sm opacity-80 leading-relaxed mb-4">
+  Curated essentials for the modern life. Designed with intention, delivered with care.
+</p>
+
+<div className="flex gap-4 text-sm opacity-80">
+  <a href="#" className="hover:opacity-100 hover:underline">Facebook</a>
+  <a href="#" className="hover:opacity-100 hover:underline">Instagram</a>
+  <a href="#" className="hover:opacity-100 hover:underline">Twitter</a>
+  <a href="#" className="hover:opacity-100 hover:underline">LinkedIn</a>
+</div>        </div>
 
         <div>
           <h4 className="font-semibold mb-3 text-sm uppercase tracking-wider opacity-90">Shop</h4>
