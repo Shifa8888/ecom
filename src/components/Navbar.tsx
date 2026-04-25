@@ -64,7 +64,7 @@ export function Navbar() {
               L
             </div>
             <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>
-              LUMEN
+              Hashir-store
             </span>
           </button>
 

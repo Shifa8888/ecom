@@ -39,7 +39,7 @@ export function Login() {
             <div className="w-12 h-12 flex items-center justify-center font-bold text-2xl rounded-xl bg-white/20 backdrop-blur">
               L
             </div>
-            <span className="text-2xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>LUMEN</span>
+            <span className="text-2xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>Hashir-store </span>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ export function Login() {
             <div className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg"
                  style={{ background: "linear-gradient(135deg, var(--color-primary), var(--color-accent))",
                           color: "var(--color-on-primary)" }}>L</div>
-            <span className="text-xl font-bold">LUMEN</span>
+            <span className="text-xl font-bold">Hashir-store </span>
           </div>
 
           <h2 className="text-3xl font-bold mb-2" style={{ fontFamily: "var(--font-display)" }}>Sign in</h2>
@@ -143,7 +143,7 @@ export function Login() {
           </div>
 
           <p className="text-center text-sm muted mt-8">
-            New to LUMEN? <a href="#" className="theme-link font-medium">Create an account</a>
+            New to Hashir-store ? <a href="#" className="theme-link font-medium">Create an account</a>
           </p>
         </form>
       </div>

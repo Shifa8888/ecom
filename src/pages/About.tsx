@@ -42,7 +42,7 @@ export function About() {
             }}>Delivered with love.</span>
           </h1>
           <p className="text-lg muted max-w-2xl mx-auto">
-            LUMEN started as a small idea in 2021 — a place where great design, great products, and great service
+            Hashir-store started as a small idea in 2021 — a place where great design, great products, and great service
             could finally live together. Today, we ship to over 40 countries and our community keeps growing.
           </p>
         </div>

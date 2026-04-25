@@ -115,7 +115,7 @@ export function Checkout() {
         <div className="page-enter max-w-2xl mx-auto px-4 py-20 text-center">
           <div className="text-7xl mb-6 inline-block heartbeat">🎉</div>
           <h1 className="text-4xl font-bold mb-3" style={{ fontFamily: "var(--font-display)" }}>Order confirmed!</h1>
-          <p className="muted mb-2">Thanks for shopping with LUMEN.</p>
+          <p className="muted mb-2">Thanks for shopping with Hashir-store .</p>
           <p className="text-sm mb-8">Your order ID is <span className="font-bold font-mono">{orderId}</span></p>
 
           <div className="theme-card p-6 mb-8 text-left">

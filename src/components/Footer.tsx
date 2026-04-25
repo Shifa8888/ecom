@@ -13,7 +13,7 @@ export function Footer() {
                           borderRadius: "var(--radius-btn)" }}>
               L
             </div>
-            <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>LUMEN</span>
+            <span className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-display)" }}>Hashir-store</span>
           </div>
           <p className="text-sm opacity-80 leading-relaxed">
             Curated essentials for the modern life. Designed with intention, delivered with care.
@@ -61,7 +61,7 @@ export function Footer() {
 
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs opacity-70">
-          <div>© 2026 Lumen. All rights reserved.</div>
+          <div>© 2026 Hashir-store. All rights reserved.</div>
           <div className="flex gap-5">
             <a href="#" className="hover:opacity-100">Privacy</a>
             <a href="#" className="hover:opacity-100">Terms</a>
