@@ -22,7 +22,6 @@ export function Footer() {
 <div className="flex gap-4 text-sm opacity-80">
   <a href="#" className="hover:opacity-100 hover:underline">Facebook</a>
   <a href="#" className="hover:opacity-100 hover:underline">Instagram</a>
-  <a href="#" className="hover:opacity-100 hover:underline">Twitter</a>
   <a href="#" className="hover:opacity-100 hover:underline">LinkedIn</a>
 </div>        </div>
 
