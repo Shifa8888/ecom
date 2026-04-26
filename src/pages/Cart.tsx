@@ -35,33 +35,37 @@ export function Cart() {
       <div className="grid lg:grid-cols-[1fr_380px] gap-8">
         <div className="space-y-3 stagger">
           {lines.map(l => (
-            <div key={l.productId} className="theme-card p-4 flex gap-4 items-center hover:translate-x-1">
+            <div key={l.productId} className="theme-card p-4 flex gap-4 items-start hover:translate-x-1">
               <button onClick={() => navigate(`/product/${l.product.id}`)}
-                      className={`w-24 h-24 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br ${l.product.gradient}`}
+                      className={`w-20 h-20 sm:w-24 sm:h-24 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br ${l.product.gradient}`}
                       style={{ borderRadius: "var(--radius-card)" }}>
                 <img src={l.product.photo} alt={l.product.name}
                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
                      className="w-full h-full object-cover" />
               </button>
-              <div className="flex-1 min-w-0">
-                <button onClick={() => navigate(`/product/${l.product.id}`)} className="text-left">
-                  <h3 className="font-semibold leading-snug truncate">{l.product.name}</h3>
-                </button>
-                <div className="text-sm muted capitalize mt-0.5">{l.product.category}</div>
-                <div className="text-base font-bold mt-1">${l.product.price.toFixed(2)}</div>
+              <div className="flex-1 min-w-0 flex flex-col gap-2">
+                <div className="flex items-start justify-between gap-2">
+                  <div className="min-w-0">
+                    <button onClick={() => navigate(`/product/${l.product.id}`)} className="text-left">
+                      <h3 className="font-semibold leading-snug line-clamp-2">{l.product.name}</h3>
+                    </button>
+                    <div className="text-sm muted capitalize mt-0.5">{l.product.category}</div>
+                    <div className="text-base font-bold mt-1">${l.product.price.toFixed(2)}</div>
+                  </div>
+                  <button onClick={() => remove(l.productId)} className="muted hover:text-rose-500 hover:rotate-90 text-sm px-1 transition-transform duration-300 shrink-0">✕</button>
+                </div>
+                <div className="flex items-center theme-btn-outline overflow-hidden w-fit">
+                  <button onClick={() => setQty(l.productId, l.qty - 1)} className="px-2.5 py-1.5 hover:opacity-70">−</button>
+                  <div className="px-3 font-bold text-sm min-w-[32px] text-center">{l.qty}</div>
+                  <button onClick={() => setQty(l.productId, l.qty + 1)} className="px-2.5 py-1.5 hover:opacity-70">+</button>
+                </div>
               </div>
-              <div className="flex items-center theme-btn-outline overflow-hidden">
-                <button onClick={() => setQty(l.productId, l.qty - 1)} className="px-2.5 py-1.5 hover:opacity-70">−</button>
-                <div className="px-3 font-bold text-sm min-w-[32px] text-center">{l.qty}</div>
-                <button onClick={() => setQty(l.productId, l.qty + 1)} className="px-2.5 py-1.5 hover:opacity-70">+</button>
-              </div>
-              <button onClick={() => remove(l.productId)} className="muted hover:text-rose-500 hover:rotate-90 text-sm px-2 transition-transform duration-300">✕</button>
             </div>
           ))}
           <button onClick={clear} className="text-sm muted hover:opacity-70 mt-2">Clear cart</button>
         </div>
 
-        <aside className="theme-card p-6 h-fit lg:sticky lg:top-24">
+        <aside className="theme-card p-4 sm:p-6 h-fit lg:sticky lg:top-24">
           <h2 className="font-bold text-lg mb-4">Order summary</h2>
           <div className="space-y-2.5 text-sm mb-4 pb-4 border-b" style={{ borderColor: "var(--color-border)" }}>
             <div className="flex justify-between">
