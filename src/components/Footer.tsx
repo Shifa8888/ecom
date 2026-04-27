@@ -83,7 +83,7 @@ export function Footer() {
           <h4 className="font-semibold mb-3 text-sm uppercase tracking-wider opacity-90">Stay in touch</h4>
           <p className="text-sm opacity-80 mb-3">Get 10% off your first order.</p>
           <form onSubmit={(e) => { e.preventDefault(); alert("Subscribed!"); }} className="flex flex-col sm:flex-row gap-2">
-            <input type="email" required placeholder="you@email.com"
+            <input type="email" required placeholder=" hashirmajeed1447@gmail.com"
                    className="flex-1 px-3 py-2 text-sm rounded-md outline-none min-w-0"
                    style={{ background: "rgba(255,255,255,0.1)", color: "var(--footer-text)",
                             border: "1px solid rgba(255,255,255,0.2)" }} />

@@ -199,7 +199,7 @@ export function Checkout() {
                 </Field>
                 <Field label="Email" error={errors.email}>
                   <input type="email" value={address.email} onChange={e => setAddress({ ...address, email: e.target.value })}
-                         className="theme-input w-full px-3 py-2.5 text-sm" placeholder="you@email.com" />
+                         className="theme-input w-full px-3 py-2.5 text-sm" placeholder=" hashirmajeed1447@gmail.com" />
                 </Field>
                 <Field label="Phone" error={errors.phone}>
                   <input type="tel" value={address.phone} onChange={e => setAddress({ ...address, phone: e.target.value })}
