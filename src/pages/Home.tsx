@@ -29,7 +29,7 @@ export function Home() {
                            animationDelay: "0.1s" }}>
               ✦ New Spring Collection
             </span>
-            <h1 className="text-5xl lg:text-7xl font-bold leading-[1.05] mb-6" style={{ fontFamily: "var(--font-display)" }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] mb-6" style={{ fontFamily: "var(--font-display)" }}>
               Discover things <br/>
               <span style={{
                 background: "linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary))",
@@ -53,7 +53,7 @@ export function Home() {
               </RippleButton>
             </div>
 
-            <div className="flex gap-8 mt-10 pt-8 border-t" style={{ borderColor: "var(--color-border)" }}>
+            <div className="flex flex-wrap gap-6 sm:gap-8 mt-10 pt-8 border-t" style={{ borderColor: "var(--color-border)" }}>
               <div>
                 <div className="text-2xl font-bold"><CountUp to={12} suffix="k+" /></div>
                 <div className="text-xs muted">Customers</div>

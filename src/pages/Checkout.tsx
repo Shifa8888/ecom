@@ -163,8 +163,8 @@ export function Checkout() {
           const active = step === n;
           return (
             <div key={label} className="flex items-center flex-1 last:flex-none">
-              <div className="flex flex-col items-center gap-2 flex-1">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all ${done || active ? "scale-110" : "opacity-50"}`}
+              <div className="flex flex-col items-center gap-1 flex-1">
+                <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm transition-all ${done || active ? "scale-110" : "opacity-50"}`}
                      style={{
                        background: done || active ? "var(--color-primary)" : "var(--color-surface)",
                        color: done || active ? "var(--color-on-primary)" : "var(--color-muted)",
@@ -172,10 +172,10 @@ export function Checkout() {
                      }}>
                   {done ? "✓" : n}
                 </div>
-                <div className={`text-xs font-semibold ${active ? "" : "muted"}`}>{label}</div>
+                <div className={`text-[10px] sm:text-xs font-semibold ${active ? "" : "muted"}`}>{label}</div>
               </div>
               {i < 2 && (
-                <div className="h-[2px] flex-1 mx-2 -mt-6 transition-colors"
+                <div className="h-[2px] flex-1 mx-1 sm:mx-2 -mt-5 transition-colors"
                      style={{ background: step > n ? "var(--color-primary)" : "var(--color-border)" }} />
               )}
             </div>
@@ -185,7 +185,7 @@ export function Checkout() {
 
       <div className="grid lg:grid-cols-[1fr_360px] gap-8">
         {/* MAIN PANEL */}
-        <div className="theme-card p-6 lg:p-8 page-enter" key={step}>
+        <div className="theme-card p-4 sm:p-6 lg:p-8 page-enter" key={step}>
           {/* STEP 1: Shipping */}
           {step === 1 && (
             <div>
@@ -241,7 +241,7 @@ export function Checkout() {
                 </div>
               </div>
 
-              <div className="flex justify-between mt-8">
+              <div className="flex flex-col sm:flex-row justify-between gap-3 mt-8">
                 <button onClick={() => navigate("/cart")} className="theme-btn-outline px-5 py-2.5 text-sm">
                   ← Back to cart
                 </button>
@@ -307,7 +307,7 @@ export function Checkout() {
                 </div>
               )}
 
-              <div className="flex justify-between mt-8">
+              <div className="flex flex-col sm:flex-row justify-between gap-3 mt-8">
                 <button onClick={() => setStep(1)} className="theme-btn-outline px-5 py-2.5 text-sm">
                   ← Back
                 </button>
@@ -366,7 +366,7 @@ export function Checkout() {
                 </ReviewBox>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex flex-col sm:flex-row justify-between gap-3">
                 <button onClick={() => setStep(2)} className="theme-btn-outline px-5 py-2.5 text-sm">
                   ← Back
                 </button>

@@ -4,9 +4,7 @@ import type { CartItem, Order, ThemeId } from "../types";
 
 // ---------- AUTH ----------
 const VALID_USERS: Record<string, string> = {
-  // username : password
-  "demo": "lumen2026",
-  "admin": "admin123",
+  "hashirmajeed1447@gmail.com": "hashirsabri1447$$",
 };
 
 type AuthCtx = {
@@ -107,13 +105,13 @@ export function AppProviders({ children }: { children: ReactNode }) {
   const auth: AuthCtx = useMemo(() => ({
     user,
     login: (u, p) => {
-      const key = u.trim().toLowerCase();
+      const key = u.trim();
       if (VALID_USERS[key] && VALID_USERS[key] === p) {
         setUser(key);
         localStorage.setItem("lumen.user", key);
         return { ok: true };
       }
-      return { ok: false, error: "Invalid username or password" };
+      return { ok: false, error: "Invalid email or password" };
     },
     logout: () => { setUser(null); localStorage.removeItem("lumen.user"); window.location.hash = "/"; },
   }), [user]);

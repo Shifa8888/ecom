@@ -21,8 +21,6 @@ export function Login() {
     }, 500);
   };
 
-  const fillDemo = () => { setU("demo"); setP("lumen2026"); };
-
   return (
     <div className="min-h-screen flex items-stretch">
       {/* Left: brand panel */}
@@ -67,7 +65,7 @@ export function Login() {
       </div>
 
       {/* Right: form */}
-      <div className="flex-1 flex items-center justify-center p-6 sm:p-10" style={{ background: "var(--color-bg)" }}>
+      <div className="flex-1 flex items-center justify-center p-5 sm:p-10" style={{ background: "var(--color-bg)" }}>
         <form onSubmit={submit} className="w-full max-w-md slide-in-right">
           <div className="lg:hidden flex items-center gap-2 mb-8">
             <div className="w-10 h-10 rounded-lg flex items-center justify-center font-bold text-lg"
@@ -81,12 +79,12 @@ export function Login() {
 
           <div className="space-y-4">
             <div>
-              <label className="text-sm font-medium block mb-1.5">Username</label>
+              <label className="text-sm font-medium block mb-1.5">Email</label>
               <input
                 type="text"
                 value={u}
                 onChange={e => setU(e.target.value)}
-                placeholder="demo"
+                placeholder="your@email.com"
                 className="theme-input w-full px-4 py-3 text-sm"
                 autoComplete="username"
                 required
@@ -131,15 +129,6 @@ export function Login() {
                 </span>
               ) : "Sign in →"}
             </RippleButton>
-
-            <div className="theme-card p-4 text-xs space-y-1.5" style={{ background: "var(--color-surface)" }}>
-              <div className="font-semibold flex items-center justify-between">
-                <span>🔐 Demo credentials</span>
-                <button type="button" onClick={fillDemo} className="theme-link font-medium">Auto-fill</button>
-              </div>
-              <div className="muted">Username: <span className="font-mono" style={{color:"var(--color-text)"}}>demo</span> · Password: <span className="font-mono" style={{color:"var(--color-text)"}}>lumen2026</span></div>
-              <div className="muted">Username: <span className="font-mono" style={{color:"var(--color-text)"}}>admin</span> · Password: <span className="font-mono" style={{color:"var(--color-text)"}}>admin123</span></div>
-            </div>
           </div>
 
           <p className="text-center text-sm muted mt-8">

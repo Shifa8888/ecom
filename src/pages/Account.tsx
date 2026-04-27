@@ -26,17 +26,17 @@ export function Account() {
              style={{ background: "linear-gradient(135deg, var(--color-primary), var(--color-accent), var(--color-primary))",
                       color: "var(--color-on-primary)" }}>
           <div className="absolute inset-0 shimmer pointer-events-none opacity-50" />
-          <div className="relative flex items-center gap-5">
-            <div className="w-20 h-20 rounded-full flex items-center justify-center font-bold text-3xl bg-white/25 backdrop-blur shadow-lg">
+          <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center font-bold text-2xl sm:text-3xl bg-white/25 backdrop-blur shadow-lg shrink-0">
               {user?.charAt(0).toUpperCase()}
             </div>
             <div className="flex-1 min-w-0">
               <div className="text-sm uppercase tracking-widest opacity-80">Welcome back</div>
-              <h1 className="text-3xl lg:text-4xl font-bold capitalize" style={{ fontFamily: "var(--font-display)" }}>{user}</h1>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold capitalize" style={{ fontFamily: "var(--font-display)" }}>{user}</h1>
               <p className="text-sm opacity-80 mt-1">Member since 2026 · Gold tier ✨</p>
             </div>
             <button onClick={logout}
-                    className="px-4 py-2 text-sm font-semibold rounded-md bg-white/20 hover:bg-white/30 backdrop-blur transition-colors hidden sm:block">
+                    className="px-4 py-2 text-sm font-semibold rounded-md bg-white/20 hover:bg-white/30 backdrop-blur transition-colors">
               Logout
             </button>
           </div>

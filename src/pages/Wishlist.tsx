@@ -26,7 +26,7 @@ export function Wishlist() {
 
   return (
     <div className="page-enter max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <div className="flex flex-wrap items-end justify-between gap-3 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
         <div>
           <h1 className="text-3xl font-bold" style={{ fontFamily: "var(--font-display)" }}>Your wishlist</h1>
           <p className="muted text-sm mt-1">{items.length} saved item{items.length > 1 ? "s" : ""}</p>

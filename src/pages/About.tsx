@@ -31,7 +31,7 @@ export function About() {
                          color: "var(--color-primary)" }}>
             ✦ Our story
           </span>
-          <h1 className="text-5xl lg:text-7xl font-bold leading-[1.05] mb-6" style={{ fontFamily: "var(--font-display)" }}>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.05] mb-6" style={{ fontFamily: "var(--font-display)" }}>
             Designed with intent. <br/>
             <span style={{
               background: "linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary))",

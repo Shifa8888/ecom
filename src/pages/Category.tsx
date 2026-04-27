@@ -9,6 +9,7 @@ export function Category({ id }: { id: string }) {
   const [sort, setSort] = useState<"featured" | "price-asc" | "price-desc" | "rating">("featured");
   const [maxPrice, setMaxPrice] = useState<number>(500);
   const [query, setQuery] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   const items = useMemo(() => {
     let arr = PRODUCTS.filter(p => p.category === id && p.price <= maxPrice);
@@ -46,7 +47,7 @@ export function Category({ id }: { id: string }) {
           <div className="flex items-center gap-4">
             <div className="text-5xl pop-in inline-block">{cat.icon}</div>
             <div className="slide-in-left">
-              <h1 className="text-3xl lg:text-4xl font-bold" style={{ fontFamily: "var(--font-display)" }}>{cat.name}</h1>
+              <h1 className="text-2xl lg:text-4xl font-bold" style={{ fontFamily: "var(--font-display)" }}>{cat.name}</h1>
               <p className="muted text-sm mt-1">{PRODUCTS.filter(p => p.category === id).length} products available</p>
             </div>
           </div>
@@ -54,63 +55,84 @@ export function Category({ id }: { id: string }) {
       </section>
 
       {/* Filters + Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 grid lg:grid-cols-[260px_1fr] gap-8">
-        <aside className="space-y-5">
-          <div className="theme-card p-5">
-            <h3 className="font-semibold text-sm mb-3">Search</h3>
-            <input type="search" value={query} onChange={e => setQuery(e.target.value)}
-                   placeholder="Search in this category..."
-                   className="theme-input w-full px-3 py-2 text-sm" />
-          </div>
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Mobile filter toggle */}
+        <div className="flex items-center justify-between mb-4 lg:hidden">
+          <div className="text-sm muted">Showing <span className="font-bold" style={{color:"var(--color-text)"}}>{items.length}</span> products</div>
+          <button onClick={() => setFiltersOpen(v => !v)}
+                  className="theme-btn-outline px-4 py-2 text-sm flex items-center gap-2">
+            🔧 Filters {filtersOpen ? "▲" : "▼"}
+          </button>
+        </div>
 
-          <div className="theme-card p-5">
-            <h3 className="font-semibold text-sm mb-3">Max price</h3>
-            <input type="range" min={20} max={500} step={10}
-                   value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))}
-                   className="w-full accent-current"
-                   style={{ accentColor: "var(--color-primary)" }} />
-            <div className="text-sm muted mt-2 flex justify-between">
-              <span>$20</span>
-              <span className="font-bold" style={{ color: "var(--color-text)" }}>${maxPrice}</span>
+        <div className="grid lg:grid-cols-[260px_1fr] gap-8">
+          <aside className={`space-y-5 ${filtersOpen ? "block" : "hidden"} lg:block`}>
+            <div className="theme-card p-5">
+              <h3 className="font-semibold text-sm mb-3">Search</h3>
+              <input type="search" value={query} onChange={e => setQuery(e.target.value)}
+                     placeholder="Search in this category..."
+                     className="theme-input w-full px-3 py-2 text-sm" />
             </div>
-          </div>
 
-          <div className="theme-card p-5">
-            <h3 className="font-semibold text-sm mb-3">Browse other</h3>
-            <div className="space-y-1">
-              {CATEGORIES.filter(c => c.id !== id).map(c => (
-                <button key={c.id} onClick={() => navigate(`/category/${c.id}`)}
-                        className="w-full text-left px-3 py-2 rounded-md text-sm hover:opacity-70 flex items-center gap-2">
-                  <span>{c.icon}</span> {c.name}
-                </button>
-              ))}
+            <div className="theme-card p-5">
+              <h3 className="font-semibold text-sm mb-3">Max price</h3>
+              <input type="range" min={20} max={500} step={10}
+                     value={maxPrice} onChange={e => setMaxPrice(Number(e.target.value))}
+                     className="w-full accent-current"
+                     style={{ accentColor: "var(--color-primary)" }} />
+              <div className="text-sm muted mt-2 flex justify-between">
+                <span>$20</span>
+                <span className="font-bold" style={{ color: "var(--color-text)" }}>${maxPrice}</span>
+              </div>
             </div>
-          </div>
-        </aside>
 
-        <div>
-          <div className="flex items-center justify-between mb-5">
-            <div className="text-sm muted">Showing <span className="font-bold" style={{color:"var(--color-text)"}}>{items.length}</span> products</div>
-            <select value={sort} onChange={e => setSort(e.target.value as typeof sort)}
-                    className="theme-input px-3 py-2 text-sm">
-              <option value="featured">Featured</option>
-              <option value="price-asc">Price: Low → High</option>
-              <option value="price-desc">Price: High → Low</option>
-              <option value="rating">Top rated</option>
-            </select>
-          </div>
+            <div className="theme-card p-5">
+              <h3 className="font-semibold text-sm mb-3">Browse other</h3>
+              <div className="space-y-1">
+                {CATEGORIES.filter(c => c.id !== id).map(c => (
+                  <button key={c.id} onClick={() => navigate(`/category/${c.id}`)}
+                          className="w-full text-left px-3 py-2 rounded-md text-sm hover:opacity-70 flex items-center gap-2">
+                    <span>{c.icon}</span> {c.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </aside>
 
-          {items.length === 0 ? (
-            <div className="theme-card p-12 text-center">
-              <div className="text-5xl mb-3">🔎</div>
-              <p className="font-semibold mb-1">No products found</p>
-              <p className="text-sm muted">Try adjusting your filters or search.</p>
+          <div>
+            <div className="hidden lg:flex items-center justify-between mb-5">
+              <div className="text-sm muted">Showing <span className="font-bold" style={{color:"var(--color-text)"}}>{items.length}</span> products</div>
+              <select value={sort} onChange={e => setSort(e.target.value as typeof sort)}
+                      className="theme-input px-3 py-2 text-sm">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: Low → High</option>
+                <option value="price-desc">Price: High → Low</option>
+                <option value="rating">Top rated</option>
+              </select>
             </div>
-          ) : (
-            <div key={`${id}-${sort}-${maxPrice}-${query}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 stagger">
-              {items.map(p => <ProductCard key={p.id} product={p} />)}
+            {/* Mobile sort */}
+            <div className="flex lg:hidden items-center justify-end mb-4">
+              <select value={sort} onChange={e => setSort(e.target.value as typeof sort)}
+                      className="theme-input px-3 py-2 text-sm">
+                <option value="featured">Featured</option>
+                <option value="price-asc">Price: Low → High</option>
+                <option value="price-desc">Price: High → Low</option>
+                <option value="rating">Top rated</option>
+              </select>
             </div>
-          )}
+
+            {items.length === 0 ? (
+              <div className="theme-card p-12 text-center">
+                <div className="text-5xl mb-3">🔎</div>
+                <p className="font-semibold mb-1">No products found</p>
+                <p className="text-sm muted">Try adjusting your filters or search.</p>
+              </div>
+            ) : (
+              <div key={`${id}-${sort}-${maxPrice}-${query}`} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 stagger">
+                {items.map(p => <ProductCard key={p.id} product={p} />)}
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </div>

@@ -41,7 +41,7 @@ export function ProductPage({ id }: { id: string }) {
 
       <div className="grid lg:grid-cols-2 gap-10">
         {/* Image */}
-        <div className={`theme-card tilt overflow-hidden h-[440px] lg:h-[520px] flex items-center justify-center bg-gradient-to-br ${product.gradient} relative scale-in group`}>
+        <div className={`theme-card tilt overflow-hidden h-[300px] sm:h-[400px] lg:h-[520px] flex items-center justify-center bg-gradient-to-br ${product.gradient} relative scale-in group`}>
           <img
             src={product.photo}
             alt={product.name}
@@ -85,15 +85,15 @@ export function ProductPage({ id }: { id: string }) {
 
           <p className="muted leading-relaxed mb-7">{product.description}</p>
 
-          <div className="theme-card p-5 mb-6">
-            <div className="flex items-center gap-4 mb-4">
+          <div className="theme-card p-4 sm:p-5 mb-6">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
               <div className="text-sm font-medium">Quantity</div>
               <div className="flex items-center theme-btn-outline overflow-hidden">
                 <button onClick={() => setQty(q => Math.max(1, q - 1))} className="px-3 py-2 hover:opacity-70">−</button>
                 <div className="px-4 font-bold min-w-[40px] text-center">{qty}</div>
                 <button onClick={() => setQty(q => Math.min(product.stock, q + 1))} className="px-3 py-2 hover:opacity-70">+</button>
               </div>
-              <div className="text-xs muted ml-auto">
+              <div className="text-xs muted">
                 {product.stock > 10
                   ? <span style={{color:"#10b981"}}>● In stock</span>
                   : <span style={{color:"#f59e0b"}}>● Only {product.stock} left</span>}

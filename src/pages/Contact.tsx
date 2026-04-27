@@ -45,7 +45,7 @@ export function Contact() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid lg:grid-cols-[1fr_1.4fr] gap-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid lg:grid-cols-[1fr_1.4fr] gap-8 sm:gap-10">
         {/* Channels */}
         <Reveal variant="left">
           <div className="space-y-4">
@@ -64,7 +64,7 @@ export function Contact() {
 
         {/* Form */}
         <Reveal variant="right">
-          <form onSubmit={submit} className="theme-card p-6 lg:p-8">
+          <form onSubmit={submit} className="theme-card p-4 sm:p-6 lg:p-8">
             <h2 className="text-2xl font-bold mb-1" style={{ fontFamily: "var(--font-display)" }}>Send us a message</h2>
             <p className="text-sm muted mb-6">We'll get back to you within 1 business day.</p>
 

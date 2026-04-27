@@ -34,27 +34,27 @@ export function Orders() {
           return (
             <div key={o.id} className="theme-card overflow-hidden">
               <button onClick={() => setOpenId(isOpen ? null : o.id)}
-                      className="w-full p-5 flex flex-wrap items-center gap-4 text-left hover:opacity-90">
-                <div className="flex -space-x-3">
+                      className="w-full p-4 sm:p-5 flex flex-wrap items-center gap-3 sm:gap-4 text-left hover:opacity-90">
+                <div className="flex -space-x-3 shrink-0">
                   {o.items.slice(0, 3).map((i, idx) => (
                     <div key={idx}
-                         className="w-12 h-12 rounded-full overflow-hidden border-2 shrink-0"
+                         className="w-10 h-10 sm:w-12 sm:h-12 rounded-full overflow-hidden border-2 shrink-0"
                          style={{ borderColor: "var(--color-surface-2)" }}>
                       <img src={i.photo} alt={i.name} className="w-full h-full object-cover" />
                     </div>
                   ))}
                   {o.items.length > 3 && (
-                    <div className="w-12 h-12 rounded-full surface flex items-center justify-center text-xs font-bold shrink-0 border-2"
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full surface flex items-center justify-center text-xs font-bold shrink-0 border-2"
                          style={{ borderColor: "var(--color-surface-2)" }}>
                       +{o.items.length - 3}
                     </div>
                   )}
                 </div>
-                <div className="flex-1 min-w-[180px]">
+                <div className="flex-1 min-w-[120px]">
                   <div className="font-bold text-sm">Order {o.id}</div>
                   <div className="text-xs muted">{o.date} · {o.items.reduce((s, i) => s + i.qty, 0)} items</div>
                 </div>
-                <div className="text-right">
+                <div className="text-right ml-auto">
                   <div className="font-bold">${o.total.toFixed(2)}</div>
                   <div className="text-xs font-semibold mt-0.5 inline-flex items-center gap-1.5"
                        style={{ color: statusColor }}>
