@@ -29,8 +29,8 @@ export function Contact() {
   };
 
   const channels = [
-    { icon: "✉️", title: "Email", text: "support@lumenstore.com", sub: "Reply within 24 hours" },
-    { icon: "📞", title: "Phone", text: "+1 (555) 123-4567", sub: "Mon–Fri, 9am–6pm EST" },
+    { icon: "✉️", title: "Email", text: " hashirmajeed1447@gmail.com", sub: "Reply within 24 hours" },
+    { icon: "📞", title: "Phone", text: "+92 305 1877721", sub: "Mon–Fri, 9am–6pm EST" },
     { icon: "📍", title: "HQ", text: "221B Baker Street", sub: "London, United Kingdom" },
     { icon: "💬", title: "Live chat", text: "Chat with us instantly", sub: "Available 24/7" },
   ];
