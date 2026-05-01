@@ -1,8 +1,48 @@
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { useRouter } from "../context/AppContext";
 import { CATEGORIES } from "../data/products";
 
+// ─── EmailJS Config ───────────────────────────────────────────────
+// 1. emailjs.com par free account banao
+// 2. Email Service add karo (Gmail) → Service ID copy karo
+// 3. Email Template banao → Template ID copy karo
+// 4. Account > API Keys → Public Key copy karo
+const EMAILJS_SERVICE_ID  = "YOUR_SERVICE_ID";   // e.g. "service_abc123"
+const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";  // e.g. "template_xyz789"
+const EMAILJS_PUBLIC_KEY  = "YOUR_PUBLIC_KEY";   // e.g. "abcDEFghiJKL"
+// ─────────────────────────────────────────────────────────────────
+
 export function Footer() {
   const { navigate } = useRouter();
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("sending");
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          subscriber_email: email,
+          to_email: "hashirmajeed1447@gmail.com",
+          message: `New newsletter subscriber: ${email}`,
+        },
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus("success");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 4000);
+    } catch (err) {
+      console.error("EmailJS error:", err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 4000);
+    }
+  };
   return (
     <footer className="theme-footer mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -82,16 +122,40 @@ export function Footer() {
         <div>
           <h4 className="font-semibold mb-3 text-sm uppercase tracking-wider opacity-90">Stay in touch</h4>
           <p className="text-sm opacity-80 mb-3">Get 10% off your first order.</p>
-          <form onSubmit={(e) => { e.preventDefault(); alert("Subscribed!"); }} className="flex flex-col sm:flex-row gap-2">
-            <input type="email" required placeholder=" hashirmajeed1447@gmail.com"
-                   className="flex-1 px-3 py-2 text-sm rounded-md outline-none min-w-0"
-                   style={{ background: "rgba(255,255,255,0.1)", color: "var(--footer-text)",
-                            border: "1px solid rgba(255,255,255,0.2)" }} />
-            <button className="px-4 py-2 text-sm font-semibold rounded-md shrink-0"
-                    style={{ background: "var(--color-accent)", color: "var(--footer-bg)" }}>
-              Join
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+            <input
+              type="email"
+              required
+              placeholder="your@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={status === "sending"}
+              className="flex-1 px-3 py-2 text-sm rounded-md outline-none min-w-0"
+              style={{ background: "rgba(255,255,255,0.1)", color: "var(--footer-text)",
+                       border: "1px solid rgba(255,255,255,0.2)" }}
+            />
+            <button
+              type="submit"
+              disabled={status === "sending"}
+              className="px-4 py-2 text-sm font-semibold rounded-md shrink-0 transition-opacity"
+              style={{ background: "var(--color-accent)", color: "var(--footer-bg)",
+                       opacity: status === "sending" ? 0.7 : 1 }}
+            >
+              {status === "sending" ? "..." : "Join"}
             </button>
           </form>
+
+          {/* Status messages */}
+          {status === "success" && (
+            <p className="mt-2 text-xs" style={{ color: "#4ade80" }}>
+              ✓ Subscribed! Welcome aboard 🎉
+            </p>
+          )}
+          {status === "error" && (
+            <p className="mt-2 text-xs" style={{ color: "#f87171" }}>
+              ✗ Something went wrong. Please try again.
+            </p>
+          )}
         </div>
       </div>
 
